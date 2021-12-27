@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApplicationAssignment.Models;
 
 namespace WebApplicationAssignment.Controllers
@@ -76,8 +72,12 @@ namespace WebApplicationAssignment.Controllers
         [Route("Delete")]
         public ActionResult Delete(int id)
         {
-            Customer cust = customer.Find(c => c.Id == id);
-            customer.Remove(cust);
+            if(customer!=null)
+            {
+                Customer cust = customer.Find(c => c.Id == id);
+                customer.Remove(cust);
+            }
+            
             return RedirectToAction("Get");
         }
     }

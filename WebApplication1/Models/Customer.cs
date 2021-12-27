@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationAssignment.Models
 {
-    public enum EGender
+    public enum Gender
     {
         male = 1,
         female = 2,
@@ -16,14 +12,20 @@ namespace WebApplicationAssignment.Models
     {
         public int Id { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide Name")]
+        [Required]
         public string Name { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please Provide Age")]
+        [Required]
         public int Age { get; set; }
 
 
-        [Required(ErrorMessage = "Please Provide Gender")]
-        public EGender Gender { get; set; }
+        [Required]
+        public Gender Gender { get; set; }
+
+        [RegularExpression(".+@.+\\..+", ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }   
+
+        [RegularExpression("((\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?)?\\d{3}[\\s.-]?\\d{4}", ErrorMessage = "Invalid Phone Number")]
+        public string Phone { get; set; }
     }
 }
