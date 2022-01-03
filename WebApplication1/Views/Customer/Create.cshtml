@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Create";
 }
-
 <h1>Create</h1>
 
 <h4>Customer</h4>
@@ -37,15 +36,14 @@
             </div>
             <br>
             <div class="form-group">
-                Gender<br>
-                <input type="radio" value=1 id="Gender" name="Gender" /> Male &nbsp;
-                <input type="radio" value=2 id="Gender" name="Gender" /> Female &nbsp;
-                <input type="radio" value=3 id="Gender" name="Gender" /> Other<br />
-                @Html.ValidationMessageFor(m => m.Gender, "", new
-                {
-                    @class = "text-danger"
-                })
-            </div>
+                Gender &nbsp;@Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })<br>
+                    @Html.Label("Male")
+                    @Html.RadioButtonFor(model => model.Gender, "Male")&nbsp;&nbsp;&nbsp;
+                    @Html.Label("Female")
+                    @Html.RadioButtonFor(model => model.Gender, "Female")&nbsp;&nbsp;&nbsp;
+                    @Html.Label("Other")
+                    @Html.RadioButtonFor(model => model.Gender, "Other")
+            </div>            
             <br>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>

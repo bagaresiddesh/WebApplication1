@@ -2,12 +2,6 @@
 
 namespace WebApplicationAssignment.Models
 {
-    public enum Gender
-    {
-        male = 1,
-        female = 2,
-        other = 3
-    }
     public class Customer
     {
         public int Id { get; set; }
@@ -18,9 +12,8 @@ namespace WebApplicationAssignment.Models
         [Required]
         public int Age { get; set; }
 
-
         [Required]
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [RegularExpression(".+@.+\\..+", ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }   
