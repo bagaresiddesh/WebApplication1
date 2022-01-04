@@ -42,7 +42,7 @@ namespace WebApplicationAssignment.Controllers
         [Route("Edit")]
         public IActionResult Edit(int id)
         {
-            Customer oCustomer = customer.Where(a => a.Id.Equals(id)).Select(s => s).FirstOrDefault();
+            Customer oCustomer = customer.Where(a => a.Id.Equals(id)).FirstOrDefault();
             return View(oCustomer);
         }
 
@@ -55,7 +55,7 @@ namespace WebApplicationAssignment.Controllers
             if (oCustomer != null)
             {
                 oCustomer.Name = cust.Name;
-                oCustomer.Age = cust.Age;
+                oCustomer.DateOfBirth = cust.DateOfBirth;
                 oCustomer.Gender = cust.Gender;
             }
             return RedirectToAction("Get", oCustomer);
@@ -72,12 +72,12 @@ namespace WebApplicationAssignment.Controllers
         [Route("Delete")]
         public ActionResult Delete(int id)
         {
-            if(customer!=null)
+            if (customer != null)
             {
                 Customer cust = customer.Find(c => c.Id == id);
                 customer.Remove(cust);
             }
-            
+
             return RedirectToAction("Get");
         }
     }
